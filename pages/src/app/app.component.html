@@ -1,0 +1,60 @@
+<nav>
+  <ul class="pagination">
+    <li
+      class="page-item"
+      [appClass]="disablePrev()"
+    >
+      <a
+        class="page-link"
+        (click)="clickPrev()"
+      >Prev</a>
+    </li>
+    <ng-container *appTimes="25; let i = index;">
+      <li class="page-item"
+          *ngIf="displayPage(i)"
+          [appClass]="getPageLinkClass(i)"
+      >
+        <a
+          class="page-link"
+          (click)="clickPage(i)"
+        >{{i + 1}}</a>
+      </li>
+    </ng-container>
+    <li
+      class="page-item"
+      [appClass]="disableNext()"
+    >
+      <a
+        class="page-link"
+        (click)="clickNext()"
+      >Next</a>
+    </li>
+  </ul>
+</nav>
+
+<div>
+  <h4 >{{images[currentPage].title}}</h4>
+  <img [src]="images[currentPage].url"/>
+</div>
+
+<div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">
+    Current Page is zero
+  </div>
+  <div *ngSwitchCase="2">
+    Current Page is two
+  </div>
+  <div *ngSwitchCase="3">
+    Current Page is three
+  </div>
+  <div *ngSwitchCase="4">
+    Current Page is four
+  </div>
+  <div *ngSwitchDefault>
+    default page
+  </div>
+</div>
+
+<ul *appTimes="5">
+  <li>Hi there</li>
+</ul>
